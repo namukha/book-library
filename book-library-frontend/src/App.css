@@ -1,0 +1,23 @@
+.app {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #ededed;
+    text-align: center;
+}
+
+
+
+.tbl {
+    background-color: white;
+    text-align: center;
+    padding: 25px 10px;
+    margin: 30% 10% 10px 10%;
+    border: none !important;
+}
+
+.btn {
+    background-color: #2674ad !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
