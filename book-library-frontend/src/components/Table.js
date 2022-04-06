@@ -1,19 +1,11 @@
 import Table from 'react-bootstrap/Table';
 import React, { useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
-import Modal from 'react-bootstrap/Modal';
-import Form from 'react-bootstrap/Form';
 import Edit from './Edit'
 import Buttonn from './Button';
+import ConfirmDel from './ConfirmDel';
 
 const Husnegt = (props) => {
     const [books, setBook] = useState([]);
-    const [remove, setRemove] = useState(false);
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
 
     useEffect(() => {
 
@@ -27,33 +19,12 @@ const Husnegt = (props) => {
             .then(res => {
                 setBook(res.data)
             })
-    }, [remove, <Edit />, <Buttonn />])
-
-    const confirmDel = (props) => {
-        removeBook(props)
-        handleClose()
-    }
-
-    const removeBook = (e) => {
-        setRemove(true)
-        console.log(e)
-        fetch(`http://54.251.166.194:3002/deleteBook/${e}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify()
-        })
-            .then(res => res.json())
-            .then(() => {
-                setRemove(false)
-            })
-    }
+    }, [ <Edit />, <Buttonn />])
 
     return (
         <>
             <div className='tbl'>
-                <Table striped >
+                <Table striped responsive>
                     <thead>
                         <tr>
                             <th>#</th>
@@ -75,22 +46,8 @@ const Husnegt = (props) => {
                                     <td>{data.isbn}</td>
                                     <td>{data.pubdate.slice(0, 10)}</td>
                                     <td><Edit book={data} /></td>
-                                    <td onClick={handleShow}><img src='/img/trash.png' /></td>
+                                    <td><ConfirmDel data = {data.isbn} /></td>
                                 </tr>
-                                <Modal show={show} onHide={handleClose}>
-                                    <Modal.Header closeButton>
-                                        <Modal.Title>Warning</Modal.Title>
-                                    </Modal.Header>
-                                    <Modal.Body>Are you sure to delete this book?</Modal.Body>
-                                    <Modal.Footer>
-                                        <Button onClick={handleClose}>
-                                            Cancel
-                                        </Button>
-                                        <Button variant="primary" onClick={() => confirmDel(data.isbn)}>
-                                            Delete
-                                        </Button>
-                                    </Modal.Footer>
-                                </Modal>
                             </>
 
                         )}

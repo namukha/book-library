@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-function Buttonn(props) {
+function Buttonn() {
     const [show, setShow] = useState(false);
 
     const handleShow = () => setShow(true);
@@ -64,7 +66,7 @@ function Buttonn(props) {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Control
-                                type="text" placeholder="Published Date" defaultValue=""
+                                type="date" placeholder="Published Date" defaultValue=""
                             />
                         </Form.Group>
                         <Button variant="primary" type='submit'>

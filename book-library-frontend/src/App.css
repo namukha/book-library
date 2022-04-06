@@ -9,6 +9,7 @@
 
 
 .tbl {
+    position: relative;
     background-color: white;
     text-align: center;
     padding: 25px 10px;

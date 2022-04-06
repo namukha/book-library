@@ -60,7 +60,7 @@ const Edit = (props) => {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Control
-                                type="text" placeholder="Published Date" defaultValue={props.book.pubdate}
+                                type="date" placeholder="Published Date" defaultValue={props.book.pubdate}
                             />
                         </Form.Group>
                         <Button variant="primary" type='submit'>Save</Button> 
