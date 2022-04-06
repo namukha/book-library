@@ -3,15 +3,15 @@ import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
-function Buttonn(props) {
+const Edit = (props) => {
     const [show, setShow] = useState(false);
 
-    const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-    const addBook = (e) => {
+    const handleEdit = (e) => {
         e.preventDefault()
-        fetch(`http://54.251.166.194:3002/addBook`, {
+        fetch(`http://54.251.166.194:3002/updateBook/${props.book.isbn}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -27,54 +27,49 @@ function Buttonn(props) {
             )
         })
             .then(res => res.json())
-            .then(() => {
+            .then(()=>{
                 handleClose()
             })
     }
-
     return (
         <>
-            <Button className='btn' onClick={handleShow}>
-                + Add Book
-            </Button>
-
+            <img src='/img/edit.png' onClick={handleShow}/>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton> <Modal.Title>Add Book</Modal.Title> </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={addBook}>
+                    <Form onSubmit={handleEdit}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Control
-                                type="text" placeholder="Name" defaultValue=""
+                                type="text" placeholder="Name" defaultValue={props.book.name}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Control
-                                type="text" placeholder="Price" defaultValue=""
+                                type="text" placeholder="Price" defaultValue={props.book.price}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Control
-                                type="text" placeholder="Author" defaultValue=""
+                                type="text" placeholder="Author" defaultValue={props.book.author} 
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Control
-                                type="text" placeholder="ISBN" defaultValue=""
+                                type="text" placeholder="ISBN" defaultValue={props.book.isbn}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Control
-                                type="text" placeholder="Published Date" defaultValue=""
+                                type="text" placeholder="Published Date" defaultValue={props.book.pubdate}
                             />
                         </Form.Group>
-                        <Button variant="primary" type='submit'>
-                            Save
-                        </Button>
+                        <Button variant="primary" type='submit'>Save</Button> 
                     </Form>
                 </Modal.Body>
             </Modal>
         </>
-    );
+
+    )
 }
 
-export default Buttonn;
+export default Edit;
