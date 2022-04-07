@@ -7,10 +7,14 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function Buttonn(props) {
     const [show, setShow] = useState(false);
-    const {renderr, setRenderr} = props.onRndr;
+    const [value, setValue] = useState('');
+    const { renderr, setRenderr } = props.onRndr;
 
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
+    function handleChange(e) {
+        setValue(e.target.value);
+      }
 
     const addBook = (e) => {
         e.preventDefault()
@@ -47,35 +51,28 @@ function Buttonn(props) {
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton> <Modal.Title>Add Book</Modal.Title> </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={addBook}>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Control
-                                type="text" placeholder="Name" 
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Control
-                                type="text" placeholder="Price" 
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Control
-                                type="text" placeholder="Author" 
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Control
-                                type="text" placeholder="ISBN" 
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Control
-                                type="date" placeholder="Published Date" 
-                            />
-                        </Form.Group>
-                        <Button variant="primary" type='submit'>
-                            Save
-                        </Button>
+                    <Form className='form' onSubmit={addBook}>
+                        <div className="input-container">
+                            <input type='text' defaultValue="" onChange={handleChange}/>
+                            <label className={value && 'filled'}> Name </label>
+                        </div>
+                        <div className="input-container">
+                            <input type='text' defaultValue="" />
+                            <label> Price </label>
+                        </div>
+                        <div className="input-container">
+                            <input type='text' defaultValue="" />
+                            <label> Author </label>
+                        </div>
+                        <div className="input-container">
+                            <input type='text' defaultValue="" />
+                            <label> ISBN </label>
+                        </div>
+                        <div className="input-container">
+                            <input type='date' defaultValue="" />
+                            <label> Published Date </label>
+                        </div>
+                        <Button variant="primary" type='submit'>Save</Button>
                     </Form>
                 </Modal.Body>
             </Modal>

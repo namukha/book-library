@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 
 const Edit = (props) => {
     const [show, setShow] = useState(false);
-    const {renderr, setRenderr} = props.onRndr;
+    const { renderr, setRenderr } = props.onRndr;
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -28,7 +28,7 @@ const Edit = (props) => {
             )
         })
             .then(res => res.json())
-            .then(()=>{
+            .then(() => {
                 handleClose()
             })
             .finally(() => {
@@ -37,14 +37,14 @@ const Edit = (props) => {
     }
     return (
         <>
-            <img src='/img/edit.svg' onClick={handleShow}/>
+            <img src='/img/edit.svg' onClick={handleShow} />
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton> <Modal.Title>Add Book</Modal.Title> </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={handleEdit}>
+                    {/* <Form onSubmit={handleEdit}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Control
-                                type="text" placeholder="Name" defaultValue={props.book.name}
+                                className='input' type="text" placeholder="Name" defaultValue={props.book.name}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -69,7 +69,16 @@ const Edit = (props) => {
                         </Form.Group>
                         
                         <Button variant="primary" type='submit'>Save</Button> 
-                    </Form>
+                    </Form> */}
+                    <form onSubmit={handleEdit}>
+                        <div className="input-container">
+                            <input type='text' defaultValue={props.book.name} />
+                            <label>
+                                Name
+                            </label>
+                        </div>
+                        <Button variant="primary" type='submit'>Save</Button>
+                    </form>
                 </Modal.Body>
             </Modal>
         </>
