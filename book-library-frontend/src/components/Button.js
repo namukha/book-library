@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function Buttonn() {
+function Buttonn(props) {
     const [show, setShow] = useState(false);
     const {renderr, setRenderr} = props.onRndr;
 
