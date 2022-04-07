@@ -46,27 +46,27 @@ function Buttonn() {
                     <Form onSubmit={addBook}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Control
-                                type="text" placeholder="Name" defaultValue=""
+                                type="text" placeholder="Name" 
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Control
-                                type="text" placeholder="Price" defaultValue=""
+                                type="text" placeholder="Price" 
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Control
-                                type="text" placeholder="Author" defaultValue=""
+                                type="text" placeholder="Author" 
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Control
-                                type="text" placeholder="ISBN" defaultValue=""
+                                type="text" placeholder="ISBN" 
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Control
-                                type="date" placeholder="Published Date" defaultValue=""
+                                type="date" placeholder="Published Date" 
                             />
                         </Form.Group>
                         <Button variant="primary" type='submit'>

@@ -33,7 +33,7 @@ const Edit = (props) => {
     }
     return (
         <>
-            <img src='/img/edit.png' onClick={handleShow}/>
+            <img src='/img/edit.svg' onClick={handleShow}/>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton> <Modal.Title>Add Book</Modal.Title> </Modal.Header>
                 <Modal.Body>
@@ -63,6 +63,7 @@ const Edit = (props) => {
                                 type="date" placeholder="Published Date" defaultValue={props.book.pubdate}
                             />
                         </Form.Group>
+                        
                         <Button variant="primary" type='submit'>Save</Button> 
                     </Form>
                 </Modal.Body>

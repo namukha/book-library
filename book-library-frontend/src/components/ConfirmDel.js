@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 const ConfirmDel = (props) => {
     const [remove, setRemove] = useState(false);
     const [show, setShow] = useState(false);
+    const {renderr, setRenderr} = props.onRndr;
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -24,12 +25,15 @@ const ConfirmDel = (props) => {
                 setRemove(false)
                 handleClose()
             })
+            .finally(() => {
+                setRenderr(!renderr)
+            })
     }
 
     return (
         <>
         <div onClick={()=>handleShow()}>
-        <img src='/img/trash.png' />
+        <img src='/img/trash.svg' />
         </div>
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>

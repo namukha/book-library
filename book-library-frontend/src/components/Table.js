@@ -4,8 +4,9 @@ import Edit from './Edit'
 import Buttonn from './Button';
 import ConfirmDel from './ConfirmDel';
 
-const Husnegt = (props) => {
+const Husnegt = () => {
     const [books, setBook] = useState([]);
+    const [renderr, setRenderr] = useState(false);
 
     useEffect(() => {
 
@@ -19,7 +20,7 @@ const Husnegt = (props) => {
             .then(res => {
                 setBook(res.data)
             })
-    }, [ <Edit />, <Buttonn />])
+    }, [renderr])
 
     return (
         <>
@@ -45,8 +46,8 @@ const Husnegt = (props) => {
                                     <td>{data.author}</td>
                                     <td>{data.isbn}</td>
                                     <td>{data.pubdate.slice(0, 10)}</td>
-                                    <td><Edit book={data} /></td>
-                                    <td><ConfirmDel data = {data.isbn} /></td>
+                                    <td><Edit book={data} onRndr={{renderr, setRenderr}}/></td>
+                                    <td><ConfirmDel data = {data.isbn} onRndr={{renderr, setRenderr}}/></td>
                                 </tr>
                             </>
 
@@ -55,7 +56,7 @@ const Husnegt = (props) => {
                 </Table>
 
             </div>
-            <Buttonn book={books} />
+            <Buttonn book={books} onRndr={{renderr, setRenderr}}/>
         </>
 
     )
