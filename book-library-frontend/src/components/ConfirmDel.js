@@ -12,7 +12,6 @@ const ConfirmDel = (props) => {
 
     const removeBook = (e) => {
         setRemove(true)
-        console.log(e)
         fetch(`http://54.251.166.194:3002/deleteBook/${e}`, {
             method: "POST",
             headers: {
