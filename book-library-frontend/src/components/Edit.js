@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 
 const Edit = (props) => {
     const [show, setShow] = useState(false);
+    const {renderr, setRenderr} = props.onRndr;
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -29,6 +30,9 @@ const Edit = (props) => {
             .then(res => res.json())
             .then(()=>{
                 handleClose()
+            })
+            .finally(() => {
+                setRenderr(!renderr)
             })
     }
     return (

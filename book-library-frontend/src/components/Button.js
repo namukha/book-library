@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function Buttonn() {
     const [show, setShow] = useState(false);
+    const {renderr, setRenderr} = props.onRndr;
 
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
@@ -31,6 +32,9 @@ function Buttonn() {
             .then(res => res.json())
             .then(() => {
                 handleClose()
+            })
+            .finally(() => {
+                setRenderr(!renderr)
             })
     }
 
