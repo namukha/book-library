@@ -1,7 +1,7 @@
 import Table from 'react-bootstrap/Table';
 import React, { useState, useEffect } from 'react';
 import Edit from './Edit'
-import Buttonn from './Button';
+import AddBook from './AddBook';
 import ConfirmDel from './ConfirmDel';
 
 const Husnegt = () => {
@@ -56,7 +56,7 @@ const Husnegt = () => {
                 </Table>
 
             </div>
-            <Buttonn book={books} onRndr={{renderr, setRenderr}}/>
+            <AddBook book={books} onRndr={{renderr, setRenderr}}/>
         </>
 
     )

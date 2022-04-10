@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import Input from './Input';
 
 const Edit = (props) => {
     const [show, setShow] = useState(false);
@@ -41,44 +42,14 @@ const Edit = (props) => {
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton> <Modal.Title>Add Book</Modal.Title> </Modal.Header>
                 <Modal.Body>
-                    {/* <Form onSubmit={handleEdit}>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Control
-                                className='input' type="text" placeholder="Name" defaultValue={props.book.name}
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Control
-                                type="text" placeholder="Price" defaultValue={props.book.price}
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Control
-                                type="text" placeholder="Author" defaultValue={props.book.author} 
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Control
-                                type="text" placeholder="ISBN" defaultValue={props.book.isbn}
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Control
-                                type="date" placeholder="Published Date" defaultValue={props.book.pubdate}
-                            />
-                        </Form.Group>
-                        
+                    <Form onSubmit={handleEdit}>
+                        <Input label='Name' defaultValue={props.books.name}/>
+                        <Input label='Price' defaultValue={props.books.price}/>
+                        <Input label='Author' defaultValue={props.books.author}/>
+                        <Input label='ISBN' defaultValue={props.books.isbn}/>
+                        <Input type='date' label='Published Date' defaultValue={props.books.pubdate}/>
                         <Button variant="primary" type='submit'>Save</Button> 
-                    </Form> */}
-                    <form onSubmit={handleEdit}>
-                        <div className="input-container">
-                            <input type='text' defaultValue={props.book.name} />
-                            <label>
-                                Name
-                            </label>
-                        </div>
-                        <Button variant="primary" type='submit'>Save</Button>
-                    </form>
+                    </Form>
                 </Modal.Body>
             </Modal>
         </>

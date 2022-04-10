@@ -2,19 +2,14 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import Input from './Input';
 
 function Buttonn(props) {
     const [show, setShow] = useState(false);
-    const [value, setValue] = useState('');
     const { renderr, setRenderr } = props.onRndr;
 
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
-    function handleChange(e) {
-        setValue(e.target.value);
-      }
 
     const addBook = (e) => {
         e.preventDefault()
@@ -49,30 +44,15 @@ function Buttonn(props) {
             </Button>
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton> <Modal.Title>Add Book</Modal.Title> </Modal.Header>
+                <Modal.Header closeButton> <h2 style={{width: "calc(100% - 32px)", textAlign: "center"}}>Add Book</h2> </Modal.Header>
                 <Modal.Body>
                     <Form className='form' onSubmit={addBook}>
-                        <div className="input-container">
-                            <input type='text' defaultValue="" onChange={handleChange}/>
-                            <label className={value && 'filled'}> Name </label>
-                        </div>
-                        <div className="input-container">
-                            <input type='text' defaultValue="" />
-                            <label> Price </label>
-                        </div>
-                        <div className="input-container">
-                            <input type='text' defaultValue="" />
-                            <label> Author </label>
-                        </div>
-                        <div className="input-container">
-                            <input type='text' defaultValue="" />
-                            <label> ISBN </label>
-                        </div>
-                        <div className="input-container">
-                            <input type='date' defaultValue="" />
-                            <label> Published Date </label>
-                        </div>
-                        <Button variant="primary" type='submit'>Save</Button>
+                        <Input label="Name"/>
+                        <Input label="Price"/>
+                        <Input label="Author"/>
+                        <Input label="ISBN"/>
+                        <Input type="date" defaultValue='2022-01-01' label="Published Date"/>
+                        <Button type='submit'>Save</Button>
                     </Form>
                 </Modal.Body>
             </Modal>
