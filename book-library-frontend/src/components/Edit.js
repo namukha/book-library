@@ -40,14 +40,14 @@ const Edit = (props) => {
         <>
             <img src='/img/edit.svg' onClick={handleShow} />
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton> <Modal.Title>Add Book</Modal.Title> </Modal.Header>
+                <Modal.Header closeButton> <h2 style={{width: "calc(100% - 32px)", textAlign: "center"}}>Add Book</h2> </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={handleEdit}>
-                        <Input label='Name' defaultValue={props.books.name}/>
-                        <Input label='Price' defaultValue={props.books.price}/>
-                        <Input label='Author' defaultValue={props.books.author}/>
-                        <Input label='ISBN' defaultValue={props.books.isbn}/>
-                        <Input type='date' label='Published Date' defaultValue={props.books.pubdate}/>
+                    <Form className='form' onSubmit={handleEdit}>
+                        <Input label='Name' defaultValue={props.book.name}/>
+                        <Input label='Price' defaultValue={props.book.price}/>
+                        <Input label='Author' defaultValue={props.book.author}/>
+                        <Input label='ISBN' defaultValue={props.book.isbn}/>
+                        <Input type='date' label='Published Date' defaultValue={props.book.pubdate}/>
                         <Button variant="primary" type='submit'>Save</Button> 
                     </Form>
                 </Modal.Body>
